@@ -1,8 +1,8 @@
-from telas.tela_jogador import TelaJogador
+from tela_jogador import TelaJogador
 
-from entidades.jogador import Jogador
+from jogador import Jogador
 
-from exceptions.dadoinvalido_exception import DadoInvalidoException
+from dadoinvalido_exception import DadoInvalidoException
 
 #Fazer tratamento de exceções
 
