@@ -2,11 +2,13 @@ from jogador import Jogador
 from personagem import Personagem
 from skin import Skin
 from tela_loja import TelaLoja
+from controlador_jogador import ControladorJogador
+
 
 
 class ControladorLoja:
 
-    def __init__(self, jogador: Jogador, itens = []):
+    def __init__(self, jogador: Jogador, controlador_sistema, itens = []):
         # Serve como o controlador de itens
         self.__tela_loja = TelaLoja()
         self.__itens = itens
@@ -138,7 +140,7 @@ class ControladorLoja:
 
 # Lista preliminar de jogadores e itens
 
-Amale = Jogador("Amale", "amale@gmail.com", "amale123", 999999)
+"""Amale = Jogador("Amale", "amale@gmail.com", "amale123", 999999)
 Tchali = Jogador("Tchali", "tchali123@gmail.com.br", "tchali123")
 B_de_Bingança = Jogador("B de Bingança", "B@B", "123")
 Teste = Jogador("Teste", "a", "a", 10000)
@@ -155,3 +157,4 @@ pikachu_wwe = Skin("Pikachu Luta-Libre", 30, pikachu)
 pikachu_gmax = Skin("Pikachu Gigantamax", 1200, pikachu)
 loja = ControladorLoja(Teste, [ornn, ornn_flor_esp, mordekaiser, kratos, kratos_nordico, pikachu, pikachu_ash,
                     pikachu_gmax, pikachu_surf, pikachu_wwe])
+loja.comprar_item()"""

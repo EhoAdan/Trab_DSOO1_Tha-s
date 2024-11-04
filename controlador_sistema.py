@@ -10,7 +10,7 @@ class ControladorSistema:
 
     def __init__(self):
         self.__controlador_jogador = ControladorJogador(self)
-        self.__loja = Loja(self, Jogador, itens = [])
+        self.__loja = ControladorLoja(self, Jogador, self, itens = [])
         self.__tela_sistema = TelaSistema()
     
     @property
@@ -46,6 +46,7 @@ pikachu_ash = Skin("Pikachu Ash", 22, pikachu)
 pikachu_wwe = Skin("Pikachu Luta-Libre", 30, pikachu)
 pikachu_gmax = Skin("Pikachu Gigantamax", 1200, pikachu)
 amale = Jogador("Amale", "tantofaz123", "amale123", 800)
-loja = ControladorLoja(amale, [ornn, ornn_flor_esp, mordekaiser, kratos, kratos_nordico, pikachu, pikachu_ash,
+sistema = ControladorSistema()
+loja = ControladorLoja(amale, sistema, [ornn, ornn_flor_esp, mordekaiser, kratos, kratos_nordico, pikachu, pikachu_ash,
                     pikachu_gmax, pikachu_surf, pikachu_wwe])
 loja.comprar_item()
