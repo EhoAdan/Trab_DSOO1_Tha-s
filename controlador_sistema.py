@@ -13,11 +13,11 @@ class ControladorSistema:
         self.__loja = ControladorLoja(jogador, self, itens)
         self.__tela_sistema = TelaSistema()
         self.__logou = False
-    
+
     @property
     def controlador_jogador(self):
         return self.__controlador_jogador
-    
+
     @property
     def loja(self):
         return self.__loja
@@ -36,7 +36,7 @@ class ControladorSistema:
 
     def inicializa_sistema(self):
         self.abre_tela()
-    
+
     def encerrar(self):
         print("Jogo encerrado")
         exit()
@@ -49,6 +49,7 @@ class ControladorSistema:
                 usuario_registrado.nome == email_ou_usuario):
                 if usuario_registrado.senha == senha_informada:
                     self.__controlador_jogador.jogador_logado = usuario_registrado
+                    self.__loja.jogador = usuario_registrado
                     self.__logou = True
                     print(f"Você logou como: {self.__controlador_jogador.jogador_logado.nome}")
                     return usuario_registrado
@@ -102,7 +103,6 @@ Ao menos uma letra
                 break
             except NameError:
                 print("Favor inserir uma senha válida")
-        jogador_novo = nome #Dessa forma evitamos de ter um item jogador_novo sendo modificado na lista toda vez que tentamos criar outro
         jogador_novo = Jogador(nome, senha, email)
         self.__controlador_jogador.jogadores.append(jogador_novo)
         print(f"""Nova conta criada com sucesso!
@@ -111,19 +111,18 @@ Seu e-mail é: {email}
 Sua senha é: {senha}
 """)
 
-
-
     def abre_jogador(self):
         if not self.__logou:
+            print("Faça login antes.")
             return None
         # Ações login não é um nome muito apropriado pra agora mas enfim
         self.__controlador_jogador.acoes_login()
 
     def abre_loja(self):
         if not self.__logou:
+            print("Faça login antes.")
             return None
         self.loja.abre_tela()
-        
 
     def abre_tela(self):
         tela_opcoes = {0: self.encerrar,
@@ -147,5 +146,4 @@ pikachu_wwe = Skin("Pikachu Luta-Libre", 30, pikachu)
 pikachu_gmax = Skin("Pikachu Gigantamax", 1200, pikachu)
 itens = [ornn, ornn_flor_esp, mordekaiser, kratos, kratos_nordico, pikachu, pikachu_ash,
                     pikachu_gmax, pikachu_surf, pikachu_wwe]
-sistema = ControladorSistema(None, itens)
-sistema.abre_tela()
+ControladorSistema(None, itens).abre_tela()

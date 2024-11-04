@@ -1,19 +1,20 @@
+from typing import List
+from compra import Compra
+
 class Jogador:
     def __init__(self, nome: str, senha: str, email: str, saldo: int = 0, lista_itens_jogador = [],
                  dinheiro_gasto: int = 0, presentes_dados: int = 0,
-                 presentes_recebidos: int = 0, partidas_jogadas: int = 0):
+                 presentes_recebidos: int = 0, partidas_jogadas: int = 0, historico_compras: List[Compra] = None):
         self.__nome = nome
         self.__email = email
         self.__senha = senha
-        self.__saldo = saldo
-        self.__lista_itens_jogador = lista_itens_jogador
-        self.__dinheiro_gasto = dinheiro_gasto
-        self.__presentes_dados = presentes_dados
         self.__presentes_recebidos = presentes_recebidos
         self.__partidas_jogadas = partidas_jogadas
         self.__amigos = []
-        self.__historico_de_compras = []
-    
+        if historico_compras is None:
+            historico_compras = []
+        self.__historico_compras = historico_compras
+
     @property
     def nome(self):
         return self.__nome
@@ -25,7 +26,7 @@ class Jogador:
     @property
     def email(self):
         return self.__email
-    
+
     @property
     def senha(self):
         return self.__senha
@@ -47,23 +48,23 @@ class Jogador:
     @property
     def dinheiro_gasto(self):
         return self.__dinheiro_gasto
-    
+
     @property
     def presentes_dados(self):
         return self.__presentes_dados
-    
+
     @property
     def presentes_recebidos(self):
         return self.__presentes_recebidos
-    
+
     @property
     def partidas_jogadas(self):
         return self.__partidas_jogadas
-    
+
     @partidas_jogadas.setter
     def partidas_jogadas(self, partidas_jogadas):
         self.__partidas_jogadas = partidas_jogadas
-    
+
     @property
     def amigos(self):
         return self.__amigos
@@ -81,9 +82,9 @@ class Jogador:
         self.__lista_itens_jogador = lista_itens_jogador
 
     @property
-    def historico_compra(self):
-        return self.__historico_compra
+    def historico_compras(self):
+        return self.__historico_compras
 
-    @historico_compra.setter
-    def historico_compra(self, historico_compra):
-        self.__historico_compra = historico_compra
+    @historico_compras.setter
+    def historico_compra(self, historico_compras):
+        self.__historico_compras = historico_compras

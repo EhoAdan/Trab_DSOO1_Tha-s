@@ -5,7 +5,6 @@ from tela_loja import TelaLoja
 from controlador_jogador import ControladorJogador
 
 
-
 class ControladorLoja:
 
     def __init__(self, jogador: Jogador, controlador_sistema, itens = []):
@@ -32,7 +31,11 @@ class ControladorLoja:
     @property
     def jogador_logado(self):
         return self.__jogador_logado
-    
+
+    @property
+    def controlador_jogador(self):
+        return self.__controlador_jogador
+
     @jogador.setter
     def jogador(self, jogador):
         try:
@@ -70,26 +73,26 @@ class ControladorLoja:
     def jogador_logado(self, jogador_logado):
         self.__jogador_logado = jogador_logado
 
+    @controlador_jogador.setter
+    def controlador_jogador(self, controlador_jogador):
+        self.__controlador_jogador = controlador_jogador
+
     def abre_tela(self):
         opcoes_loja = {0: self.__controlador_sistema.abre_tela,
                 1: self.buscar_todos_itens_loja,
                 2: self.buscar_itens_disponiveis,
                 3: self.comprar_item,
                 }
-        
+
         while True:
             opcoes_loja[self.__tela_loja.abre_tela()]()
-    
+
     def buscar_todos_itens_loja(self):
         i = 0
-        lista_itens_num = {0: None}
-        print("0: Retornar")
         for item in self.__itens:
             i += 1
             print(f"{i}: {item.nome}")
-            lista_itens_num[i] = item
-        opcao_usuario = self.__tela_loja.buscar_itens(i)
-        return lista_itens_num[opcao_usuario]
+        return None
 
     def buscar_itens_disponiveis(self, comprar = False):
         i = 0
@@ -107,8 +110,10 @@ class ControladorLoja:
                     mensagem_mostrar += f" por {item.preco}"
                 print(mensagem_mostrar)
                 lista_itens_num[i] = item
-        opcao_usuario = self.__tela_loja.buscar_itens(i)
-        return lista_itens_num[opcao_usuario]
+        if comprar:
+            opcao_usuario = self.__tela_loja.buscar_itens(i)
+            return lista_itens_num[opcao_usuario]
+        return None
 
     def comprar_item(self):
         # Vou deixar sem presentear por enquanto, mas se puxar do controlador de jogador
