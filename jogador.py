@@ -85,5 +85,5 @@ class Jogador:
         return self.__historico_compra
 
     @historico_compra.setter
-    def historico_compra(self, historico_compra)
+    def historico_compra(self, historico_compra):
         self.__historico_compra = historico_compra

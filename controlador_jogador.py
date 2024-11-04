@@ -18,45 +18,50 @@ class ControladorJogador:
     def jogador_logado(self):
         return self.__jogador_logado
 
+    @property
+    def jogadores(self):
+        return self.__jogadores
+
+    @property
+    def controlador_sistema(self):
+        return self.__controlador_sistema
+
+    @jogadores.setter
+    def jogadores(self, jogadores):
+        self.__jogadores = jogadores
+
     @jogador_logado.setter
     def jogador_logado(self, jogador_logado):
         self.__jogador_logado = jogador_logado
 
     def abre_tela(self):
-        opcoes_tela = {0: self.__controlador_sistema.abre_tela,
-                1: self.criar_conta,
-                2: self.listar,
-                3: self.estats,
-                4: self.alterar,
-                5: self.deletar,
-                6: self.login
-                }
+        opcoes_tela = {0: None,
+                1: self.listar,
+                2: self.estats,
+                3: self.alterar,
+                4: self.deletar}
         
         while True:
-            opcoes_tela[self.__tela_jogador.abre_tela()]()
-    
-    def acoes_login(self):
-        opcoes_jogador = {0: self.abre_tela,
-                1: self.jogar_partida,
-                2: self.historico_partidas,
-                3: self.adicionar_amigo,
-                4: self.excluir_amigo,
-                5: self.listar_amigos
-                }
-        
-        while True:
-            opcoes_jogador[self.__tela_jogador.acoes_login()]()
+            opcao = opcoes_tela[self.__tela_jogador.abre_tela()]
+            if not opcao:
+                return None
+            opcao()
 
-    def login(self):
-        email_informado = input("Favor, digite seu endereço de e-mail: ")
-        senha_informada = input("Favor, digite sua senha: ")
-        for usuario_registrado in self.__jogadores:
-            if usuario_registrado.email == email_informado:
-                if usuario_registrado.senha == senha_informada:
-                    self.__jogador_logado = usuario_registrado
-                    print(f"Você logou como: {self.__jogador_logado.nome}")
-                    self.acoes_login()
-        return None
+    def acoes_login(self):
+        opcoes_jogador = {0: None,
+                1: self.abre_tela,
+                2: self.jogar_partida,
+                3: self.historico_partidas,
+                4: self.adicionar_amigo,
+                5: self.excluir_amigo,
+                6: self.listar_amigos
+                }
+        
+        while True:
+            opcao = opcoes_jogador[self.__tela_jogador.acoes_login()]
+            if not opcao:
+                return None
+            opcao()
 
     def jogar_partida(self):
         print("Você jogou uma partida")
@@ -99,60 +104,6 @@ class ControladorJogador:
         for amigo in self.__jogador_logado.amigos:
             print(amigo.nome)
         return self.acoes_login()
-
-    def criar_conta(self):
-        while True:
-            # Caso não surja o NameError, ou seja, ter o email certo, quebra o loop
-            try:
-                #Funciona
-                email = str(input("Digite seu endereço de e-mail: "))
-                if any(email_usado.email == email for email_usado in self.__jogadores):
-                    print("E-mail já está em uso")
-                    raise NameError
-                if ("@" not in email or email[0] == "@" or email[-1] == "@"):
-                    raise NameError
-                break
-            except NameError:
-                print("Favor inserir um e-mail válido")
-        while True:
-            try:
-                #Funciona
-                nome = str(input("Digite seu nome de usuário: "))
-                if any(usuario_existe.nome == nome for usuario_existe in self.__jogadores):
-                    print("Nome de usuário já existe")
-                    raise NameError
-                break
-            except NameError:
-                print("Favor inserir um nome válido")
-        while True:
-            try:
-                #Funciona
-                senha = input("""Digite sua senha
-Ela deve possuir:
-Ao menos 8 caracteres
-Ao menos um número
-Ao menos uma letra
-""")
-                if len(senha) < 8:
-                    print("Senha muito curta!")
-                    raise NameError
-                if not any(caractere.isnumeric() for caractere in senha):
-                    print("Senha não possui número!")
-                    raise NameError
-                if not any(caractere.isalpha() for caractere in senha):
-                    print("Senha não possui letra!")
-                    raise NameError
-                break
-            except NameError:
-                print("Favor inserir uma senha válida")
-        jogador_novo = nome #Dessa forma evitamos de ter um item jogador_novo sendo modificado na lista toda vez que tentamos criar outro
-        jogador_novo = Jogador(nome, email, senha)
-        self.__jogadores.append(jogador_novo)
-        print(f"""Nova conta criada com sucesso!
-Seu nome de Jogador é: {nome}
-Seu e-mail é: {email}
-Sua senha é: {senha}
-""")
         
     def listar(self):
         for jogador in self.__jogadores:
@@ -233,7 +184,7 @@ Retornando à tela anterior.""")
 
 #Lista preliminar de jogadores
 
-Amale = Jogador("Amale", "amale@gmail.com", "amale123", 999999)
-Tchali = Jogador("Tchali", "tchali123@gmail.com.br", "tchali123")
-B_de_Bingança = Jogador("B de Bingança", "B@B", "123")
-Teste = Jogador("Teste", "a", "a")
+Amale = Jogador("Amale", "amale123", "amale@gmail.com", 9999999)
+Tchali = Jogador("Tchali", "tchali123", "tchali123@gmail.com.br")
+B_de_Bingança = Jogador("B de Bingança", "123", "b@b.com")
+Teste = Jogador("Teste", "a", "a", 10000)

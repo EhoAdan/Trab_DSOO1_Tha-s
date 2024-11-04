@@ -5,8 +5,10 @@ class TelaSistema:
 0- Fechar o Jogo
 1- Jogar
 2- Loja
+3- Criar conta
+4- Fazer login
 """)
-        return self.tela_selecionar_opcao_int("Selecione uma opção: ", 2, 0)
+        return self.tela_selecionar_opcao_int("Selecione uma opção: ", 4, 0)
     
     def tela_selecionar_opcao_int(self, mensagem, limite_superior, limite_inferior):
         while True:

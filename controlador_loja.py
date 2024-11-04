@@ -70,18 +70,6 @@ class ControladorLoja:
     def jogador_logado(self, jogador_logado):
         self.__jogador_logado = jogador_logado
 
-    def login(self):
-        print("Para acessar a Loja é necessário fazer Log In")
-        email_informado = input("Favor, digite seu endereço de e-mail: ")
-        senha_informada = input("Favor, digite sua senha: ")
-        for usuario_registrado in self.__controlador_jogador._ControladorJogador__jogadores:
-            if usuario_registrado.email == email_informado:
-                if usuario_registrado.senha == senha_informada:
-                    self.__jogador_logado = usuario_registrado
-                    print(f"Você logou como: {self.__jogador_logado.nome}")
-                    self.abre_tela()
-        return None
-
     def abre_tela(self):
         opcoes_loja = {0: self.__controlador_sistema.abre_tela,
                 1: self.buscar_todos_itens_loja,
@@ -135,26 +123,3 @@ class ControladorLoja:
                 self.__jogador.lista_itens_jogador.append(item_comprado)
                 return None
             print("Saldo insuficiente.")
-    def abre_tela(self):
-        pass
-
-# Lista preliminar de jogadores e itens
-
-"""Amale = Jogador("Amale", "amale@gmail.com", "amale123", 999999)
-Tchali = Jogador("Tchali", "tchali123@gmail.com.br", "tchali123")
-B_de_Bingança = Jogador("B de Bingança", "B@B", "123")
-Teste = Jogador("Teste", "a", "a", 10000)
-
-ornn = Personagem("Ornn", 1000, ["Ornn Florescer Espiritual"])
-ornn_flor_esp = Skin("Ornn Florescer Espiritual", 500, ornn)
-mordekaiser = Personagem("Mordekaiser", 800)
-kratos = Personagem("Kratos", 500, ["Kratos Nórdico"])
-kratos_nordico = Skin("Kratos Nórdico", 200, kratos)
-pikachu = Personagem("Pikachu", 52, ["Pikachu Surfista", "Pikachu-Ash", "Pikachu Luta-Libre", "Pikachu Gigantamax"])
-pikachu_surf = Skin("Pikachu Surfista", 2, pikachu)
-pikachu_ash = Skin("Pikachu Ash", 22, pikachu)
-pikachu_wwe = Skin("Pikachu Luta-Libre", 30, pikachu)
-pikachu_gmax = Skin("Pikachu Gigantamax", 1200, pikachu)
-loja = ControladorLoja(Teste, [ornn, ornn_flor_esp, mordekaiser, kratos, kratos_nordico, pikachu, pikachu_ash,
-                    pikachu_gmax, pikachu_surf, pikachu_wwe])
-loja.comprar_item()"""
