@@ -26,6 +26,10 @@ class ControladorSistema:
     def logou(self):
         return self.__logou
 
+    @controlador_jogador.setter
+    def controlador_jogador(self, controlador_jogador):
+        self.__controlador_jogador = controlador_jogador
+    
     @logou.setter
     def logou(self, logou):
         self.__logou = logou
