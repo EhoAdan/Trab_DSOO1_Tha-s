@@ -4,7 +4,6 @@ class Jogador:
                  presentes_recebidos: int = 0, partidas_jogadas: int = 0):
         self.__nome = nome
         self.__email = email
-        self.__email = email
         self.__senha = senha
         self.__saldo = saldo
         self.__lista_itens_jogador = lista_itens_jogador
@@ -80,3 +79,11 @@ class Jogador:
     @lista_itens_jogador.setter
     def lista_itens_jogador(self, lista_itens_jogador):
         self.__lista_itens_jogador = lista_itens_jogador
+
+    @property
+    def historico_compra(self):
+        return self.__historico_compra
+
+    @historico_compra.setter
+    def historico_compra(self, historico_compra)
+        self.__historico_compra = historico_compra
