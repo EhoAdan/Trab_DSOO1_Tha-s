@@ -26,9 +26,10 @@ class ControladorJogador:
         opcoes_tela = {0: self.__controlador_sistema.abre_tela,
                 1: self.criar_conta,
                 2: self.listar,
-                3: self.alterar,
-                4: self.deletar,
-                5: self.login
+                3: self.estats,
+                4: self.alterar,
+                5: self.deletar,
+                6: self.login
                 }
         
         while True:
@@ -157,6 +158,33 @@ Sua senha é: {senha}
         for jogador in self.__jogadores:
             print(jogador.nome)
 
+    def estats(self):
+        mais_dinheiro_gasto = 0
+        mais_presentes_dados = 0
+        mais_partidas_jogadas = 0
+        jog_mais_dinheiro_gasto = 0
+        jog_mais_presenteador = 0
+        jog_mais_partidas = 0
+        for jogador in self.__jogadores:
+            if jogador.dinheiro_gasto > mais_dinheiro_gasto:
+                jog_mais_dinheiro_gasto = jogador
+                mais_dinheiro_gasto = jogador.dinheiro_gasto
+            if jogador.presentes_dados > mais_presentes_dados:
+                jog_mais_presenteador = jogador
+                mais_presentes_dados = jogador.presentes_dados
+            if jogador.partidas_jogadas > mais_partidas_jogadas:
+                jog_mais_partidas = jogador
+                mais_partidas_jogadas = jogador.partidas_jogadas
+        print(f"""O jogador que mais investiu no jogo foi:
+{jog_mais_dinheiro_gasto.nome}!!!
+com um aporte total de {mais_dinheiro_gasto}!!!""")
+        print(f"""O jogador candidato à Papai Noel é:
+{jog_mais_presenteador.nome}!!!
+presenteando um total de {mais_presentes_dados} vezes!!!""")
+        print(f"""O jogador ProPlayer do momento:
+{jog_mais_partidas.nome}!!!
+jogando {mais_partidas_jogadas} partidas!!!""")
+    
     def alterar(self):
         email_informado = input("Favor, confirme seu endereço de e-mail: ")
         senha_informada = input("Favor, confirme sua senha: ")

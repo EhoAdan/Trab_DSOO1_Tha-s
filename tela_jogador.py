@@ -5,9 +5,10 @@ class TelaJogador():
 0- Voltar ao Início
 1- Criar conta
 2- Ver jogadores do server
-3- Alterar nome da sua conta
-4- Deletar sua conta
-5- Log In
+3- Ver Top Jogadores do server
+4- Alterar nome da sua conta
+5- Deletar sua conta
+6- Log In
 """)
         return self.jogador_selecionar_opcao_int("Selecione uma opção: ", 5, 0)
 

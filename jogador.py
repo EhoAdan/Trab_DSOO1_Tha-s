@@ -81,9 +81,9 @@ class Jogador:
         self.__lista_itens_jogador = lista_itens_jogador
 
     @property
-    def historico_de_compras(self):
-        return self.__historico_de_compras
+    def historico_compra(self):
+        return self.__historico_compra
 
-    @historico_de_compras.setter
-    def historico_de_compras(self, historico_de_compras):
-        self.__historico_de_compras = historico_de_compras
+    @historico_compra.setter
+    def historico_compra(self, historico_compra)
+        self.__historico_compra = historico_compra
