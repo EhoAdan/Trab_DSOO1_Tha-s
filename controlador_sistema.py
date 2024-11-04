@@ -107,7 +107,7 @@ Ao menos uma letra
                 break
             except NameError:
                 print("Favor inserir uma senha válida")
-        jogador_novo = Jogador(nome, senha, email)
+        jogador_novo = Jogador(nome, email, senha)
         self.__controlador_jogador.jogadores.append(jogador_novo)
         print(f"""Nova conta criada com sucesso!
 Seu nome de Jogador é: {nome}
