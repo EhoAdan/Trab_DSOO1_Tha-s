@@ -187,8 +187,8 @@ Tem certeza que deseja excluí-la?
                         if resposta == 9:
                             self.__jogadores.remove(usuario_registrado)
                             print("""Conta excluída com sucesso!
-Retornando à tela anterior.""")
-                            self.abre_tela()
+Retornando à tela principal.""")
+                            self.__controlador_sistema.inicializa_sistema()
                         elif resposta == 0:
                             print("Que bom que decidiu não excluir sua conta e continuar conosco!")
                             self.abre_tela()
