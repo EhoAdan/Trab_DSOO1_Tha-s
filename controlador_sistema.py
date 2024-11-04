@@ -10,7 +10,7 @@ class ControladorSistema:
 
     def __init__(self):
         self.__controlador_jogador = ControladorJogador(self)
-        self.__loja = None
+        self.__loja = Loja(self, Jogador, itens = [])
         self.__tela_sistema = TelaSistema()
     
     @property
