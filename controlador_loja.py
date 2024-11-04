@@ -96,8 +96,9 @@ class ControladorLoja:
 
     def buscar_itens_disponiveis(self, comprar = False):
         i = 0
-        lista_itens_num = {0: None}
-        print("0: Retornar")
+        if comprar:
+            lista_itens_num = {0: None}
+            print("0: Retornar")
         for item in self.__itens:
             if (item not in self.__jogador.lista_itens_jogador and
                 (isinstance(item, Personagem) or item.personagem in self.__jogador.lista_itens_jogador)):
@@ -108,8 +109,8 @@ class ControladorLoja:
                 mensagem_mostrar = f"{i}: {item.nome}"
                 if comprar:
                     mensagem_mostrar += f" por {item.preco}"
+                    lista_itens_num[i] = item
                 print(mensagem_mostrar)
-                lista_itens_num[i] = item
         if comprar:
             opcao_usuario = self.__tela_loja.buscar_itens(i)
             return lista_itens_num[opcao_usuario]
