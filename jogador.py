@@ -13,8 +13,8 @@ class Jogador:
         self.__amigos = []
         if historico_compras is None:
             historico_compras = []
-        self.__historico_compras = historico_compras
-
+        self.__historico_de_compras = []
+    
     @property
     def nome(self):
         return self.__nome
