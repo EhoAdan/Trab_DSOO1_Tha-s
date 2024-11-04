@@ -124,7 +124,7 @@ Sua senha é: {senha}
 
     def abre_loja(self):
         if not self.__logou:
-            print("Você precisa realizar LogIn antes de abri a Loja")
+            print("Você precisa realizar LogIn antes de abrir a Loja")
             return None
         self.loja.abre_tela()
 
