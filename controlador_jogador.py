@@ -1,18 +1,3 @@
-from tela_jogador import TelaJogador
-
-from item import Item
-from jogador import Jogador
-
-from dadoinvalido_exception import DadoInvalidoException
-
-#Fazer tratamento de exceções
-
-from personagem import Personagem
-from skin import Skin
-
-#Personagem e Skins estão aqui apenas
-#Para facilitar a apresentação
-
 class ControladorJogador:
 
     def __init__(self, controlador_sistema):
@@ -187,8 +172,8 @@ Tem certeza que deseja excluí-la?
                         if resposta == 9:
                             self.__jogadores.remove(usuario_registrado)
                             print("""Conta excluída com sucesso!
-Retornando à tela principal.""")
-                            self.__controlador_sistema.inicializa_sistema()
+Retornando à tela anterior.""")
+                            self.abre_tela()
                         elif resposta == 0:
                             print("Que bom que decidiu não excluir sua conta e continuar conosco!")
                             self.abre_tela()
