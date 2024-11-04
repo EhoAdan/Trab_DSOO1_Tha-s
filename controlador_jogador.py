@@ -1,3 +1,14 @@
+from tela_jogador import TelaJogador
+from item import Item
+from jogador import Jogador
+from dadoinvalido_exception import DadoInvalidoException
+#Fazer tratamento de exceções
+from personagem import Personagem
+from skin import Skin
+#Personagem e Skins estão aqui apenas
+#Para facilitar a apresentação
+
+
 class ControladorJogador:
 
     def __init__(self, controlador_sistema):
