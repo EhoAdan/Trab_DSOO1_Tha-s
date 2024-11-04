@@ -92,7 +92,6 @@ class ControladorJogador:
         else:
             self.__jogador_logado.amigos.append(jogador_existe)
             print(f"{jogador_existe.nome} adicionado com sucesso à sua lista de amigos.")
-        return self.acoes_login()
 
     def excluir_amigo(self):
         nome_jogador = input("Digite o nome do amigo que quer excluir: ")
@@ -100,13 +99,14 @@ class ControladorJogador:
         for amigo in self.__jogador_logado.amigos:
             if jogador_existe.nome == amigo.nome:
                 self.__jogador_logado.amigos.remove(amigo)
-            return self.acoes_login()
 
     def listar_amigos(self):
-        print("Esta é sua lista atual de amigos:")
-        for amigo in self.__jogador_logado.amigos:
-            print(amigo.nome)
-        return self.acoes_login()
+        if len(self.__jogador_logado.amigos) > 0:
+            print("Esta é sua lista atual de amigos:")
+            for amigo in self.__jogador_logado.amigos:
+                print(amigo.nome)
+        else:
+            print("Você ainda não tem nenhum amigo :(")
         
     def listar(self):
         for jogador in self.__jogadores:
