@@ -117,14 +117,14 @@ Sua senha é: {senha}
 
     def abre_jogador(self):
         if not self.__logou:
-            print("Faça login antes.")
+            print("Você precisa realizar LogIn antes de Jogar")
             return None
         # Ações login não é um nome muito apropriado pra agora mas enfim
         self.__controlador_jogador.acoes_login()
 
     def abre_loja(self):
         if not self.__logou:
-            print("Faça login antes.")
+            print("Você precisa realizar LogIn antes de abri a Loja")
             return None
         self.loja.abre_tela()
 
