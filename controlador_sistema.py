@@ -151,3 +151,4 @@ pikachu_gmax = Skin("Pikachu Gigantamax", 1200, pikachu)
 itens = [ornn, ornn_flor_esp, mordekaiser, kratos, kratos_nordico, pikachu, pikachu_ash,
                     pikachu_gmax, pikachu_surf, pikachu_wwe]
 ControladorSistema(None, itens).abre_tela()
+
