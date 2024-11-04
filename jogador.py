@@ -1,8 +1,9 @@
 class Jogador:
-    def __init__(self, nome: str, senha: str, saldo: int = 0, lista_itens_jogador = [],
+    def __init__(self, nome: str, email: str, senha: str, saldo: int = 0, lista_itens_jogador = [],
                  dinheiro_gasto: int = 0, presentes_dados: int = 0,
                  presentes_recebidos: int = 0, partidas_jogadas: int = 0):
         self.__nome = nome
+        self.__email = email
         self.__senha = senha
         self.__saldo = saldo
         self.__lista_itens_jogador = lista_itens_jogador
@@ -20,6 +21,10 @@ class Jogador:
     def nome(self, nome):
         self.__nome = nome
 
+    @property
+    def email(self):
+        return self.__email
+    
     @property
     def senha(self):
         return self.__senha
