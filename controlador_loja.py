@@ -108,6 +108,8 @@ class ControladorLoja:
                 i += 1
                 mensagem_mostrar = f"{i}: {item.nome}"
                 if comprar:
+                    # Como tem que atualizar o dicionário com cada iteração
+                    # acho que os prints tem que ficar aqui mesmo e não na tela
                     mensagem_mostrar += f" por {item.preco}"
                     lista_itens_num[i] = item
                 print(mensagem_mostrar)
