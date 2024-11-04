@@ -4,7 +4,7 @@ from skin import Skin
 from tela_loja import TelaLoja
 
 
-class Loja:
+class ControladorLoja:
 
     def __init__(self, jogador: Jogador, itens = []):
         # Serve como o controlador de itens
@@ -111,3 +111,6 @@ class Loja:
                 self.__jogador.lista_itens_jogador.append(item_comprado)
                 return None
             print("Saldo insuficiente.")
+
+    def abre_tela(self):
+        pass

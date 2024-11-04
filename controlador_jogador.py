@@ -12,7 +12,7 @@ class ControladorJogador:
         self.__jogadores = [Amale, Tchali, B_de_Bingança, Teste]
         self.__tela_jogador = TelaJogador()
         self.__controlador_sistema = controlador_sistema
-        self.__jogador_logado = 0
+        self.__jogador_logado = False
 
     @property
     def jogador_logado(self):
