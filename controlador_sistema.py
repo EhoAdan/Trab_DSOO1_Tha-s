@@ -117,14 +117,14 @@ Sua senha é: {senha}
 
     def abre_jogador(self):
         if not self.__logou:
-            print("Faça login antes.")
+            print("Você precisa realizar LogIn antes de Jogar")
             return None
         # Ações login não é um nome muito apropriado pra agora mas enfim
         self.__controlador_jogador.acoes_login()
 
     def abre_loja(self):
         if not self.__logou:
-            print("Faça login antes.")
+            print("Você precisa realizar LogIn antes de abri a Loja")
             return None
         self.loja.abre_tela()
 
@@ -151,3 +151,4 @@ pikachu_gmax = Skin("Pikachu Gigantamax", 1200, pikachu)
 itens = [ornn, ornn_flor_esp, mordekaiser, kratos, kratos_nordico, pikachu, pikachu_ash,
                     pikachu_gmax, pikachu_surf, pikachu_wwe]
 ControladorSistema(None, itens).abre_tela()
+
