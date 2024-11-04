@@ -10,7 +10,7 @@ class ControladorSistema:
 
     def __init__(self):
         self.__controlador_jogador = ControladorJogador(self)
-        self.__loja = None
+        self.__loja = Loja(self, Jogador, itens = [])
         self.__tela_sistema = TelaSistema()
     
     @property
@@ -31,13 +31,6 @@ class ControladorSistema:
     def abre_tela(self):
         tela_opcoes = {0: self.encerrar,
                     1: self.__controlador_jogador.abre_tela,
-                    2: self.__controlador_loja.abre_tela,}
+                    2: self.__loja.login}
         while True:
             tela_opcoes[self.__tela_sistema.menu_opcoes()]()
-
-"""ornn = Personagem("Ornn", 1000, ["Ornn Florescer Espiritual"])
-ornn_flor_esp = Skin("Ornn Florescer Espiritual", 500, ornn)
-mordekaiser = Personagem("Mordekaiser", 800)
-amale = Jogador("Amale", "amale123", 800)
-loja = Loja(amale, [ornn, ornn_flor_esp, mordekaiser])
-loja.comprar_item()"""
