@@ -1,10 +1,17 @@
 from tela_jogador import TelaJogador
 
+from item import Item
 from jogador import Jogador
 
 from dadoinvalido_exception import DadoInvalidoException
 
 #Fazer tratamento de exceções
+
+from personagem import Personagem
+from skin import Skin
+
+#Personagem e Skins estão aqui apenas
+#Para facilitar a apresentação
 
 class ControladorJogador:
 
@@ -113,9 +120,11 @@ class ControladorJogador:
         mais_dinheiro_gasto = 0
         mais_presentes_dados = 0
         mais_partidas_jogadas = 0
-        jog_mais_dinheiro_gasto = 0
-        jog_mais_presenteador = 0
-        jog_mais_partidas = 0
+        mais_itens = 0
+        jog_mais_dinheiro_gasto = None
+        jog_mais_presenteador = None
+        jog_mais_partidas = None
+        jog_mais_itens = None
         for jogador in self.__jogadores:
             if jogador.dinheiro_gasto > mais_dinheiro_gasto:
                 jog_mais_dinheiro_gasto = jogador
@@ -126,6 +135,9 @@ class ControladorJogador:
             if jogador.partidas_jogadas > mais_partidas_jogadas:
                 jog_mais_partidas = jogador
                 mais_partidas_jogadas = jogador.partidas_jogadas
+            if len(jogador.lista_itens_jogador) > mais_itens:
+                jog_mais_itens = jogador
+                mais_itens = len(jogador.lista_itens_jogador)
         print(f"""O jogador que mais investiu no jogo foi:
 {jog_mais_dinheiro_gasto.nome}!!!
 com um aporte total de {mais_dinheiro_gasto}!!!""")
@@ -135,6 +147,11 @@ presenteando um total de {mais_presentes_dados} vezes!!!""")
         print(f"""O jogador ProPlayer do momento:
 {jog_mais_partidas.nome}!!!
 jogando {mais_partidas_jogadas} partidas!!!""")
+        print(f"""O jogador com mais colecionáveis no momento é:
+{jog_mais_itens.nome}!!!
+com um total de {mais_itens} colecionáveis!!!""")
+        for item in jog_mais_itens.lista_itens_jogador:
+            print(item.nome)
     
     def alterar(self):
         email_informado = input("Favor, confirme seu endereço de e-mail: ")
@@ -182,9 +199,27 @@ Retornando à tela anterior.""")
             print("Opção inválida! Retornando a tela anterior.")
             return self.abre_tela()
 
-#Lista preliminar de jogadores
+#Lista preliminar de jogadores e itens
 
-Amale = Jogador("Amale", "amale123", "amale@gmail.com", 9999999)
-Tchali = Jogador("Tchali", "tchali123", "tchali123@gmail.com.br")
-B_de_Bingança = Jogador("B de Bingança", "123", "b@b.com")
-Teste = Jogador("Teste", "a", "a", 10000)
+ornn = Personagem("Ornn", 1000, ["Ornn Florescer Espiritual"])
+ornn_flor_esp = Skin("Ornn Florescer Espiritual", 500, ornn)
+mordekaiser = Personagem("Mordekaiser", 800)
+kratos = Personagem("Kratos", 500, ["Kratos Nórdico"])
+kratos_nordico = Skin("Kratos Nórdico", 200, kratos)
+pikachu = Personagem("Pikachu", 52, ["Pikachu Surfista", "Pikachu-Ash", "Pikachu Luta-Libre", "Pikachu Gigantamax"])
+pikachu_surf = Skin("Pikachu Surfista", 2, pikachu)
+pikachu_ash = Skin("Pikachu Ash", 22, pikachu)
+pikachu_wwe = Skin("Pikachu Luta-Libre", 30, pikachu)
+pikachu_gmax = Skin("Pikachu Gigantamax", 1200, pikachu)
+
+Amale = Jogador("Amale", "amale@gmail.com", "amale123", 150, \
+                [ornn, ornn_flor_esp, mordekaiser, kratos, kratos_nordico, \
+                 pikachu, pikachu_ash, pikachu_gmax, pikachu_surf, pikachu_wwe], \
+                    50000, 13, 7, 596)
+Tchali = Jogador("Tchali", "tchali123@gmail.com.br", "tchali123", 260, \
+                 [ornn, ornn_flor_esp, mordekaiser, kratos, kratos_nordico], \
+                 42000, 26, 18, 126)
+B_de_Bingança = Jogador("B de Bingança", "B@B", "123", 3000, \
+                        [pikachu, pikachu_ash, pikachu_gmax, pikachu_surf, pikachu_wwe], \
+                        36000, 0, 1, 5612)
+Teste = Jogador("Teste", "a", "a")
