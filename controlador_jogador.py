@@ -222,4 +222,4 @@ Tchali = Jogador("Tchali", "tchali123@gmail.com.br", "tchali123", 260, \
 B_de_Bingança = Jogador("B de Bingança", "B@B", "123", 3000, \
                         [pikachu, pikachu_ash, pikachu_gmax, pikachu_surf, pikachu_wwe], \
                         36000, 0, 1, 5612)
-Teste = Jogador("Teste", "a", "a")
+Teste = Jogador("Teste", "a", "a", 10000)
