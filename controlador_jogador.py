@@ -92,16 +92,12 @@ class ControladorJogador:
             print(f"{jogador_existe.nome} adicionado com sucesso à sua lista de amigos.")
 
     def excluir_amigo(self):
-        try:
-            nome_jogador = input("Digite o nome do amigo que quer excluir: ")
-            if nome_jogador is not Jogador:
-                raise ExclusaoException
-            jogador_existe = self.eh_jogador(nome_jogador)
-            for amigo in self.__jogador_logado.amigos:
-                if jogador_existe.nome == amigo.nome:
-                    self.__jogador_logado.amigos.remove(amigo)
-        except ExclusaoException:
-            print("O nome digitado não corresponde ao de nenhum amigo da sua lista de amigos")
+        nome_jogador = input("Digite o nome do amigo que quer excluir: ")
+        jogador_existe = self.eh_jogador(nome_jogador)
+        for amigo in self.__jogador_logado.amigos:
+            if jogador_existe.nome == amigo.nome:
+                self.__jogador_logado.amigos.remove(amigo)
+            return self.acoes_login()
 
     def listar_amigos(self):
         if len(self.__jogador_logado.amigos) > 0:
