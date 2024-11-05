@@ -3,11 +3,12 @@ from personagem import Personagem
 from skin import Skin
 from tela_loja import TelaLoja
 from controlador_jogador import ControladorJogador
+from compra import Compra
 
 
 class ControladorLoja:
 
-    def __init__(self, jogador: Jogador, controlador_sistema, itens = []):
+    def __init__(self, jogador: Jogador, controlador_sistema, itens = [], historico_compras = []):
         # Serve como o controlador de itens
         self.__tela_loja = TelaLoja()
         self.__itens = itens
@@ -15,6 +16,7 @@ class ControladorLoja:
         self.__controlador_jogador = ControladorJogador(controlador_sistema)
         self.__jogador = jogador
         self.__jogador_logado = 0
+        self.__historico_compras = historico_compras
 
     @property
     def jogador(self):
@@ -77,11 +79,20 @@ class ControladorLoja:
     def controlador_jogador(self, controlador_jogador):
         self.__controlador_jogador = controlador_jogador
 
+    @property
+    def historico_compras(self):
+        return self.__historico_compras
+
+    @historico_compras.setter
+    def historico_compras(self, historico_compras):
+        self.__historico_compras = historico_compras
+
     def abre_tela(self):
         opcoes_loja = {0: self.__controlador_sistema.abre_tela,
                 1: self.buscar_todos_itens_loja,
                 2: self.buscar_itens_disponiveis,
                 3: self.comprar_item,
+                4: self.ver_hist_compras
                 }
 
         while True:
@@ -127,7 +138,20 @@ class ControladorLoja:
             if not item_comprado:
                 return None
             if self.__jogador.saldo >= item_comprado.preco:
+                if isinstance(item_comprado, Skin):
+                    tipo_item = "skin"
+                else:
+                    tipo_item = "personagem"
+                compra = Compra(self.__jogador, item_comprado, tipo_item)
                 self.__jogador.saldo -= item_comprado.preco
                 self.__jogador.lista_itens_jogador.append(item_comprado)
+                self.__historico_compras.append(compra)
                 return None
             print("Saldo insuficiente.")
+
+    def ver_hist_compras(self):
+        for compra in self.__historico_compras:
+            self.__tela_loja.historico_compras(compra.jogador.nome, compra.item.preco,
+                                               compra.item.nome, compra.data, compra.tipo_item)
+        return None
+

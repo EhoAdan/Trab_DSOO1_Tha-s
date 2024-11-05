@@ -18,8 +18,9 @@ class TelaLoja():
 1- Ver todos os itens
 2- Ver itens disponíveis para mim
 3- Comprar item
+4- Ver histórico de compras geral
 """)
-        return self.jogador_selecionar_opcao_int("Selecione uma opção: ", 3, 0)
+        return self.jogador_selecionar_opcao_int("Selecione uma opção: ", 4, 0)
 
     def jogador_selecionar_opcao_int(self, mensagem, limite_superior, limite_inferior):
         while True:
@@ -30,3 +31,6 @@ class TelaLoja():
                 return opcao_usuario
             except ValueError:
                 print("Favor inserir uma opção válida.")
+
+    def historico_compras(self, jogador, preco, item, data, tipo_item):
+        print(f"{jogador} comprou o/a {tipo_item} {item} por {preco} pontos no dia {data}.")

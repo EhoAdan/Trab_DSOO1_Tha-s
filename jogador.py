@@ -1,10 +1,9 @@
 from typing import List
-from compra import Compra
 
 class Jogador:
     def __init__(self, nome: str, email: str, senha: str, saldo: int = 0, lista_itens_jogador = [],
                  dinheiro_gasto: int = 0, presentes_dados: int = 0,
-                 presentes_recebidos: int = 0, partidas_jogadas: int = 0, historico_compras: List[Compra] = None):
+                 presentes_recebidos: int = 0, partidas_jogadas: int = 0):
         self.__nome = nome
         self.__email = email
         self.__senha = senha
@@ -14,9 +13,6 @@ class Jogador:
         self.__lista_itens_jogador = lista_itens_jogador
         self.__dinheiro_gasto = dinheiro_gasto
         self.__presentes_dados = presentes_dados
-        if self.__historico_compras is None:
-            historico_compras = []
-        self.__historico_compras = historico_compras
         self.__amigos = []
     
     @property
@@ -84,14 +80,3 @@ class Jogador:
     @lista_itens_jogador.setter
     def lista_itens_jogador(self, lista_itens_jogador):
         self.__lista_itens_jogador = lista_itens_jogador
-
-    @property
-    def historico_compras(self):
-        return self.__historico_compras
-
-    @historico_compras.setter
-    def historico_compra(self, historico_compras):
-        self.__historico_compras = historico_compras
-    
-    def adicionar_compra(self, compra: Compra):
-        self.__historico_compras.append(compra)
