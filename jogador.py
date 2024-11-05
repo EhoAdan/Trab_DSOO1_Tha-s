@@ -10,14 +10,14 @@ class Jogador:
         self.__senha = senha
         self.__presentes_recebidos = presentes_recebidos
         self.__partidas_jogadas = partidas_jogadas
-        self.__amigos = []
-        if historico_compras is None:
-            historico_compras = []
-        self.__historico_compras = historico_compras
         self.__saldo = saldo
         self.__lista_itens_jogador = lista_itens_jogador
         self.__dinheiro_gasto = dinheiro_gasto
         self.__presentes_dados = presentes_dados
+        if self.__historico_compras is None:
+            historico_compras = []
+        self.__historico_compras = historico_compras
+        self.__amigos = []
     
     @property
     def nome(self):
@@ -92,3 +92,6 @@ class Jogador:
     @historico_compras.setter
     def historico_compra(self, historico_compras):
         self.__historico_compras = historico_compras
+    
+    def adicionar_compra(self, compra: Compra):
+        self.__historico_compras.append(compra)
