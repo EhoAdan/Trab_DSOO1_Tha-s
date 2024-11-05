@@ -92,7 +92,8 @@ class ControladorLoja:
                 1: self.buscar_todos_itens_loja,
                 2: self.buscar_itens_disponiveis,
                 3: self.comprar_item,
-                4: self.ver_hist_compras
+                4: self.ver_hist_compras,
+                5: self.ver_hist_compras_proprio
                 }
 
         while True:
@@ -155,3 +156,8 @@ class ControladorLoja:
                                                compra.item.nome, compra.data, compra.tipo_item)
         return None
 
+    def ver_hist_compras_proprio(self):
+        for compra in self.__historico_compras:
+            if compra.jogador.nome == self.__jogador.nome:
+                self.__tela_loja.historico_compras(compra.jogador.nome, compra.item.preco,
+                                                compra.item.nome, compra.data, compra.tipo_item)

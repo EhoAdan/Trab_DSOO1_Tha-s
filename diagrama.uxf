@@ -80,5 +80,9 @@ m1=0..1</panel_attributes><additional_attributes>10;10;80;10</additional_attribu
 - data : str
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>390</x><y>228</y><w>252</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;400;90</additional_attributes></element><element><id>Relation</id><coordinates><x>654</x><y>426</y><w>78</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>110;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>384</x><y>0</y><w>126</w><h>114</h></coordinates><panel_attributes>ControladorSistema
 --
-
+- itens: list
+- jogador: Jogador
+- loja: ControladorLoja(jogador, self, itens)
+- tela_sistema: TelaSistema()
+- logou: bool
 --</panel_attributes><additional_attributes></additional_attributes></element></diagram>

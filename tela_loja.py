@@ -19,8 +19,9 @@ class TelaLoja():
 2- Ver itens disponíveis para mim
 3- Comprar item
 4- Ver histórico de compras geral
+5- Ver o próprio histórico de compras
 """)
-        return self.jogador_selecionar_opcao_int("Selecione uma opção: ", 4, 0)
+        return self.jogador_selecionar_opcao_int("Selecione uma opção: ", 5, 0)
 
     def jogador_selecionar_opcao_int(self, mensagem, limite_superior, limite_inferior):
         while True:
