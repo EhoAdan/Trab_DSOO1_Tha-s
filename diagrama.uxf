@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.1"><zoom_level>6</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>114</x><y>366</y><w>198</w><h>162</h></coordinates><panel_attributes>Jogador
+<diagram program="umletino" version="15.1"><zoom_level>5</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>95</x><y>465</y><w>165</w><h>135</h></coordinates><panel_attributes>Jogador
 --
 -nome: str
 -email: str
@@ -14,38 +14,42 @@
 + __init__(nome : str, email : str, senha: str,
 saldo : int, lista_itens_jogador: [Item], dinheiro_gasto: int,
 presentes_dados: int, presentes_recebidos: int,
-partidas_jogadas: int, historico_compras: [Compra])</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>630</x><y>222</y><w>126</w><h>114</h></coordinates><panel_attributes>Item
+partidas_jogadas: int, historico_compras: [Compra])</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>525</x><y>345</y><w>105</w><h>95</h></coordinates><panel_attributes>Item
 --
 -nome
 -preco
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>594</x><y>330</y><w>90</w><h>84</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>130;10;130;80;10;80;10;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>534</x><y>402</y><w>126</w><h>48</h></coordinates><panel_attributes>Personagem
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>495</x><y>435</y><w>75</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>130;10;130;80;10;80;10;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>445</x><y>495</y><w>105</w><h>40</h></coordinates><panel_attributes>Personagem
 --
 - nome: str
 - preco: int
-- lista_skins: [str]</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>720</x><y>402</y><w>126</w><h>48</h></coordinates><panel_attributes>Skin
+- lista_skins: [str]</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>600</x><y>495</y><w>105</w><h>40</h></coordinates><panel_attributes>Skin
 --
 -nome: str
 -preco: int
 -personagem: Personagem
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>708</x><y>330</y><w>90</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90;130;90;130;130</additional_attributes></element><element><id>UMLClass</id><coordinates><x>624</x><y>48</y><w>132</w><h>114</h></coordinates><panel_attributes>Loja (ItemController)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>590</x><y>435</y><w>75</w><h>75</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90;130;90;130;130</additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>200</y><w>110</w><h>95</h></coordinates><panel_attributes>Loja (ItemController)
 --
 - jogador : Jogador
 - listaItensLoja : Item[]
-
+- controlador_sistema
+- historico_compras : [Compra]
 --
-+ buscarTodosItensLoja()
-+ buscarItensDisponiveis(Jogador.listaItensJogador)
-+ comprarItem(Jogador, Item)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>684</x><y>156</y><w>30</w><h>78</h></coordinates><panel_attributes>lt=-
++ abre_tela()
++ buscar_todos_itens_loja()
++ buscar_itens_disponiveis(comprar = False)
++ comprar_item()
++ ver_hist_compras()
++ ver_hist_compras_proprio()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>290</y><w>25</w><h>65</h></coordinates><panel_attributes>lt=-
 m1=0..1
 m2=n
-</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>816</x><y>48</y><w>132</w><h>114</h></coordinates><panel_attributes>Tela_Loja
+</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>680</x><y>200</y><w>110</w><h>95</h></coordinates><panel_attributes>Tela_Loja
 --
 + buscar_itens()
-+ jogador_selecionar_opcao_int()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>750</x><y>96</y><w>78</w><h>24</h></coordinates><panel_attributes>lt=&lt;-
-m1=0..1</panel_attributes><additional_attributes>110;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>174</x><y>150</y><w>222</w><h>174</h></coordinates><panel_attributes>JogadorController
++ jogador_selecionar_opcao_int()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>625</x><y>240</y><w>65</w><h>20</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..1</panel_attributes><additional_attributes>110;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>145</x><y>285</y><w>185</w><h>155</h></coordinates><panel_attributes>JogadorController
 --
 -jogadores : Jogador[]
 -tela_jogador = TelaJogador()
@@ -65,24 +69,34 @@ m1=0..1</panel_attributes><additional_attributes>110;10;10;10</additional_attrib
 + listar()
 + estats()
 + alterar()
-+ deletar()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>234</x><y>318</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=-
++ deletar()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>195</x><y>435</y><w>25</w><h>40</h></coordinates><panel_attributes>lt=-
 m1=0..1
 m2=n
-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>210</y><w>132</w><h>114</h></coordinates><panel_attributes>tela_jogador
+</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>335</y><w>110</w><h>95</h></coordinates><panel_attributes>tela_jogador
 --
 + abre_tela()
-+ acesso_login()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>126</x><y>258</y><w>60</w><h>24</h></coordinates><panel_attributes>lt=&lt;-
-m1=0..1</panel_attributes><additional_attributes>10;10;80;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>414</x><y>270</y><w>126</w><h>114</h></coordinates><panel_attributes>Compra
++ acesso_login()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>105</x><y>375</y><w>50</w><h>20</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..1</panel_attributes><additional_attributes>10;10;80;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>345</x><y>400</y><w>105</w><h>45</h></coordinates><panel_attributes>Compra
 --
 - jogador : Jogador
 - item : Item
 - tipo_item: str
 - data : str
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>390</x><y>228</y><w>252</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;400;90</additional_attributes></element><element><id>Relation</id><coordinates><x>654</x><y>426</y><w>78</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>110;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>384</x><y>0</y><w>126</w><h>114</h></coordinates><panel_attributes>ControladorSistema
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>325</x><y>350</y><w>210</w><h>55</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;400;90</additional_attributes></element><element><id>Relation</id><coordinates><x>545</x><y>515</y><w>65</w><h>15</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>110;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>350</x><y>165</y><w>105</w><h>115</h></coordinates><panel_attributes>ControladorSistema
 --
 - itens: list
 - jogador: Jogador
 - loja: ControladorLoja(jogador, self, itens)
 - tela_sistema: TelaSistema()
 - logou: bool
---</panel_attributes><additional_attributes></additional_attributes></element></diagram>
+--
++ inicializa_sistema()
++ encerrar()
++ login()
++ criar_conta()
++ abre_jogador()
++ abre_loja()
++ abre_tela()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>255</x><y>440</y><w>100</w><h>100</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;180;180;10</additional_attributes></element><element><id>Relation</id><coordinates><x>390</x><y>245</y><w>140</w><h>165</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>260;20;260;10;10;310</additional_attributes></element><element><id>Relation</id><coordinates><x>445</x><y>390</y><w>85</w><h>45</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;70;150;10</additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>215</y><w>80</w><h>25</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;140;30</additional_attributes></element><element><id>Relation</id><coordinates><x>225</x><y>215</y><w>135</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>250;10;10;140</additional_attributes></element><element><id>UMLClass</id><coordinates><x>485</x><y>50</y><w>105</w><h>95</h></coordinates><panel_attributes>TelaSistema
+--
++ menu_opcoes()
++ tela_selecionar_opcao_int()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>90</y><w>95</w><h>85</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;150;170;10</additional_attributes></element></diagram>
