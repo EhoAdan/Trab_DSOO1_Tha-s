@@ -1,7 +1,7 @@
 from tela_jogador import TelaJogador
 from item import Item
 from jogador import Jogador
-from exclusao_exception import ExclusaoException
+from alteracao_exception import AlteracaoException
 from personagem import Personagem
 from skin import Skin
 #Personagem e Skins estão aqui apenas
@@ -97,7 +97,6 @@ class ControladorJogador:
         for amigo in self.__jogador_logado.amigos:
             if jogador_existe.nome == amigo.nome:
                 self.__jogador_logado.amigos.remove(amigo)
-            return self.acoes_login()
 
     def listar_amigos(self):
         if len(self.__jogador_logado.amigos) > 0:
