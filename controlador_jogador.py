@@ -157,7 +157,7 @@ com um total de {mais_itens} colecionáveis!!!""")
                     novo_nome = input("Favor, digite seu novo nome: ")
                     if any(usuario_registrado.nome == novo_nome for usuario_registrado in self.__jogadores):
                         print("Nome de usuário já existe")
-                        raise ExclusaoException
+                        raise AlteracaoException
                     else:
                         usuario_registrado.nome = novo_nome
                         print(f"""Nome alterado com sucesso!
